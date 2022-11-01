@@ -1,0 +1,32 @@
+{
+  "name": "autopainter",
+  "version": "1.0.0",
+  "description": "A painting tool.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "webpack-dev-server --config webpack.config.js",
+    "build": "rm -rf build && webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbellman/autopainter.git"
+  },
+  "author": "Malcolm Bellman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbellman/autopainter/issues"
+  },
+  "homepage": "https://github.com/mbellman/autopainter#readme",
+  "devDependencies": {
+    "@swc/core": "^1.3.7",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "swc-loader": "^0.2.3",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
