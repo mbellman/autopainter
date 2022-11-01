@@ -3,6 +3,7 @@ import './body.css';
 interface AppState {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
+  isMouseDown: boolean;
 }
 
 function createAppState(): AppState {
@@ -11,7 +12,8 @@ function createAppState(): AppState {
 
   return {
     canvas,
-    ctx
+    ctx,
+    isMouseDown: false
   };
 }
 
@@ -23,6 +25,18 @@ function resizeCanvas({ canvas, ctx }: AppState): void {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+function onMouseMove(e: MouseEvent, { isMouseDown, ctx }: AppState): void {
+  if (!isMouseDown) {
+    return;
+  }
+
+  ctx.fillStyle = '#f00';
+  
+  ctx.beginPath();
+  ctx.arc(e.clientX, e.clientY, 10, 0, Math.PI * 2);
+  ctx.fill();
+}
+
 function main(): void {
   const state = createAppState();
 
@@ -31,6 +45,9 @@ function main(): void {
   resizeCanvas(state);
 
   window.addEventListener('resize', () => resizeCanvas(state));
+  window.addEventListener('mousemove', e => onMouseMove(e, state));
+  window.addEventListener('mousedown', () => state.isMouseDown = true);
+  window.addEventListener('mouseup', () => state.isMouseDown = false);
 }
 
 main();
